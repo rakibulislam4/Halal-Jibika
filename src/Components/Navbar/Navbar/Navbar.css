@@ -1,0 +1,61 @@
+.navbar-container {
+  width: 79rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  border-radius: 10px;
+  box-shadow: 0px 10px 19px 1px rgba(15, 105, 231, 0.35);
+  -webkit-box-shadow: 0px 10px 19px 1px rgba(15, 105, 231, 0.35);
+  -moz-box-shadow: 0px 10px 19px 1px rgba(15, 105, 231, 0.35);
+  padding: 1rem 0;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6rem;
+}
+.nav-links {
+  display: flex;
+  gap: 3rem;
+
+}
+.nav-auth {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.navbar a {
+  color: #4d5969;
+  transition: 0.15s;
+  font-size: 17px;
+}
+.navbar a:hover {
+  color: #0f69e7;
+}
+.navbar h1 {
+  font-size: 25px;
+}
+.navbar img{
+    width: 15rem;
+}
+.nav-auth:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-details{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 9px;
+  transition: 0.25s;
+  cursor: pointer;
+  gap: 2px;
+  
+}
+.user-details:hover{
+    background-color: rgba(15, 105, 231, 0.35);
+}
