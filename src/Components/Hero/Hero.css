@@ -12,6 +12,7 @@
   display: flex;
   align-items: center;
   margin-top: 5rem;
+  padding-left: 1rem;
 }
 .hero-content-left {
   display: flex;
