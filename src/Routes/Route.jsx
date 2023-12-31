@@ -5,11 +5,9 @@ import About from "./About/About";
 import Contact from "./Contact/Contact";
 import SignIn from "./SignIn/SignIn";
 import NotFound from "./NotFound/NotFound";
-import SignUp from './SignUp/SignUp';
-import Jobs from './Jobs/Jobs';
-import Favorite from './Favorite/Favorite';
-
-
+import SignUp from "./SignUp/SignUp";
+import Jobs from "./Jobs/Jobs";
+import Favorite from "./Favorite/Favorite";
 
 const routes = createBrowserRouter([
   {
@@ -30,22 +28,23 @@ const routes = createBrowserRouter([
       },
       {
         path: "/jobs",
-        element:<Jobs/>
+        element: <Jobs />,
       },
       {
-        path:'/favorite',
-        element:<Favorite/>
+        path: "/favorite",
+        element: <Favorite />,
+      },
+      {
+        path: "/login",
+        element: <SignIn />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
       },
     ],
   },
-  {
-    path: "/login",
-    element: <SignIn />,
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
-  },
+
   {
     path: "*",
     element: <NotFound />,

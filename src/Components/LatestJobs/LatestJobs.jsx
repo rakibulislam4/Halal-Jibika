@@ -1,5 +1,8 @@
 import './LatestJobs.css'
-export default function LatestJobs() {
+export default function LatestJobs()
+
+
+{
   return (
     <div>LatestJobs</div>
   )

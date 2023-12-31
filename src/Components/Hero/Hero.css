@@ -11,6 +11,7 @@
 .hero {
   display: flex;
   align-items: center;
+  margin-top: 5rem;
 }
 .hero-content-left {
   display: flex;
@@ -161,7 +162,7 @@
     transform: translateY(0);
   }
   20% {
-    transform: translateY(-10rem);
+    transform: translateY(-16rem);
     height: 5rem;
     border-radius: 25px;
   }
@@ -255,7 +256,7 @@
   background-color: white;
   padding: 1rem;
   border-radius: 15px;
-  z-index: 3;
+  z-index: 9999999999;
   left: 20rem;
 }
 .country-list {
@@ -264,7 +265,7 @@
 }
 .country-list h1 {
   font-size: 35px;
-  color: #c18dce;
+  color: #034354;
   height: 2.5rem;
 }
 .country-list span {
@@ -282,7 +283,7 @@
   z-index: 3;
   left: -2rem;
 }
-.reputation-info-2 h1{
+.reputation-info-2 h1 {
   font-size: 35px;
   color: #3898e2;
 }
