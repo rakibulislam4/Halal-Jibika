@@ -2,10 +2,14 @@ import "./Hero.css";
 import { useNavigate } from "react-router-dom";
 import { IoMdSettings } from "react-icons/io";
 import person from "../../assets/person.png";
+import LatestJobs from "../LatestJobs/LatestJobs";
 export default function Hero() {
   const navigate = useNavigate();
 
   return (
+    <>
+
+    
     <div className="hero">
       <div className="hero-content-left">
         <p className="advertise">
@@ -28,13 +32,15 @@ export default function Hero() {
           <span className="fourth"></span>
           Explore Now
         </button>
-<div className="hero-icons-rotate">
-
-        <div className="rotate-icon">
-          <IoMdSettings />
+        <div className="hero-icons-rotate">
+          <div className="rotate-icon">
+            <IoMdSettings />
+          </div>
         </div>
-</div>
-
+        <h1>
+          Scroll down to <span>Explore</span>
+        </h1>
+     
       </div>
 
       <div className="hero-content-right">
@@ -47,7 +53,30 @@ export default function Hero() {
         <div className="circle-3"></div>
         <div className="floating-1"></div>
         <div className="floating-2"></div>
+
+        <div className="reputation-info-1">
+          <img
+            src="https://thewebmax.org/react/jobzilla/assets/images/main-slider/slider1/icon-2.png"
+            alt=""
+          />
+          <div className="country-list">
+            <h1>98+</h1>
+            <span>Job For Countries</span>
+          </div>
+        </div>
+        <div className="reputation-info-2">
+          <img
+            src="https://thewebmax.org/react/jobzilla/assets/images/main-slider/slider1/icon-1.png"
+            alt=""
+          />
+          <div className="country-list">
+            <h1>12K+</h1>
+            <span>Companies Jobs</span>
+          </div>
+        </div>
       </div>
     </div>
+      <LatestJobs />
+      </>
   );
 }

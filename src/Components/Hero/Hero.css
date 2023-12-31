@@ -212,9 +212,9 @@
   top: 18rem;
   cursor: pointer;
   z-index: 1;
-  box-shadow: 11px 0px 25px 7px rgba(0,0,0,0.19);
--webkit-box-shadow: 11px 0px 25px 7px rgba(0,0,0,0.19);
--moz-box-shadow: 11px 0px 25px 7px rgba(0,0,0,0.19);
+  box-shadow: 11px 0px 25px 7px rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 11px 0px 25px 7px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 11px 0px 25px 7px rgba(0, 0, 0, 0.19);
 }
 .rotate-icon {
   font-size: 30px;
@@ -244,4 +244,45 @@
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.reputation-info-1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: absolute;
+  top: -2rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 15px;
+  z-index: 3;
+  left: 20rem;
+}
+.country-list {
+  display: flex;
+  flex-direction: column;
+}
+.country-list h1 {
+  font-size: 35px;
+  color: #c18dce;
+  height: 2.5rem;
+}
+.country-list span {
+  color: #545483;
+}
+.reputation-info-2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: absolute;
+  top: 15rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 15px;
+  z-index: 3;
+  left: -2rem;
+}
+.reputation-info-2 h1{
+  font-size: 35px;
+  color: #3898e2;
 }
