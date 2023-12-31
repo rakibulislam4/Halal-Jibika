@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
+
   border-radius: 10px;
   box-shadow: 0px 10px 19px 1px rgba(15, 105, 231, 0.35);
   -webkit-box-shadow: 0px 10px 19px 1px rgba(15, 105, 231, 0.35);
