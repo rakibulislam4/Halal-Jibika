@@ -4,6 +4,9 @@ import { FaGithub } from "react-icons/fa";
 
 import "./SignIn.css";
 export default function SignIn() {
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -15,7 +18,7 @@ export default function SignIn() {
           <div className="sign-in-container">
             <h1>Sign In</h1>
             <p style={{ marginBottom: "1rem" }}>
-             Get access to all the features of Halal Jibika
+              Get access to all the features of Halal Jibika
             </p>
             <div className="sign-in-form">
               <form onSubmit={handleSubmit}>
@@ -49,10 +52,7 @@ export default function SignIn() {
               <button className="google">
                 <FcGoogle />
               </button>
-              <button
-          
-                className="github"
-              >
+              <button className="github">
                 <FaGithub />
               </button>
             </div>

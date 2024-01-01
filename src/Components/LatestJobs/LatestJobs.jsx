@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-key */
-import { useEffect, useState } from "react";
 import "./LatestJobs.css";
 import { useNavigate } from "react-router-dom";
 // Creating an array to store internship objects
@@ -15,7 +14,7 @@ const internships = [
   {
     id: 2,
     title: 'Microsoft Internship Program',
-    logo: 'https://download.logo.wine/logo/Microsoft/Microsoft-Logo.wine.png',
+    logo: 'https://cdn.iconscout.com/icon/free/png-256/free-microsoft-26-722716.png',
     companyName: 'Microsoft',
     position: 'Software Engineering Intern',
     description: 'This is an internship opportunity from Microsoft'

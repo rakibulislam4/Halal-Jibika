@@ -1,0 +1,113 @@
+[
+  {
+    "id": 1,
+    "title": "Google Internship Program",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/2048px-Google_%22G%22_logo.svg.png",
+    "companyName": "Google",
+    "position": "Intern Developer",
+    "description": "This is an internship opportunity from Google"
+  },
+  {
+    "id": 2,
+    "title": "Microsoft Internship Program",
+    "logo": "https://cdn.iconscout.com/icon/free/png-256/free-microsoft-26-722716.png",
+    "companyName": "Microsoft",
+    "position": "Software Engineering Intern",
+    "description": "This is an internship opportunity from Microsoft"
+  },
+  {
+    "id": 4,
+    "title": "Apple Internship Program",
+    "logo": "https://www.svgrepo.com/show/69341/apple-logo.svg",
+    "companyName": "Apple",
+    "position": "Software Engineering Internship",
+    "description": "This is an internship opportunity from Apple"
+  },
+  {
+    "id": 5,
+    "title": "Facebook Internship Program",
+    "logo": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-round-color-icon.png",
+    "companyName": "Facebook",
+    "position": "Software Developer Intern",
+    "description": "This is an internship opportunity from Facebook"
+  },
+  {
+    "id": 6,
+    "title": "NASA Internship Program",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1224px-NASA_logo.svg.png",
+    "companyName": "NASA",
+    "position": "Space Science Intern",
+    "description": "This is an internship opportunity from NASA"
+  },
+  {
+    "id": 7,
+    "title": "IBM Internship Program",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png",
+    "companyName": "IBM",
+    "position": "Software Engineering Intern",
+    "description": "This is an internship opportunity from IBM"
+  },
+  {
+    "id": 8,
+    "title": "Intel Internship Program",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/2560px-Intel_logo_%282006-2020%29.svg.png",
+    "companyName": "Intel",
+    "position": "Software Engineering Intern",
+    "description": "This is an internship opportunity from Intel"
+  },
+  {
+    "id": 9,
+    "title": "Amazon Internship Program",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Amazon_icon.svg",
+    "companyName": "Amazon",
+    "position": "Software Engineering Intern",
+    "description": "This is an internship opportunity from Amazon"
+  },
+  {
+    "id": 10,
+    "title": "Tesla Internship Program",
+    "logo": "https://1000logos.net/wp-content/uploads/2018/02/Logo-Tesla.jpg",
+    "companyName": "Tesla",
+    "position": "Software Engineering Intern",
+    "description": "This is an internship opportunity from Tesla"
+  },
+  {
+    "id": 11,
+    "title": "Twitter Internship Program",
+    "logo": "https://logowik.com/content/uploads/images/twitter-x-icon3832.logowik.com.webp",
+    "companyName": "Twitter",
+    "position": "Software Developer Intern",
+    "description": "This is an internship opportunity from Twitter"
+  },
+  {
+    "id": 12,
+    "title": "Uber Internship Program",
+    "logo": "https://www.logo.wine/a/logo/Uber/Uber-White-Dark-Background-Logo.wine.svg",
+    "companyName": "Uber",
+    "position": "Software Engineering Intern",
+    "description": "This is an internship opportunity from Uber"
+  },
+  {
+    "id": 13,
+    "title": "Netflix Internship Program",
+    "logo": "https://www.svgrepo.com/show/354109/netflix-icon.svg",
+    "companyName": "Netflix",
+    "position": "Software Engineering Intern",
+    "description": "This is an internship opportunity from Netflix"
+  },
+  {
+    "id": 14,
+    "title": "LinkedIn Internship Program",
+    "logo": "https://iconape.com/wp-content/files/yd/367773/svg/logo-linkedin-logo-icon-png-svg.png",
+    "companyName": "LinkedIn",
+    "position": "Software Engineering Intern",
+    "description": "This is an internship opportunity from LinkedIn"
+  },
+  {
+    "id": 15,
+    "title": "Adobe Internship Program",
+    "logo": "https://seeklogo.com/images/A/adobe-logo-EB46CA63ED-seeklogo.com.png",
+    "companyName": "Adobe",
+    "description": "This is an internship opportunity from Adobe"
+  }
+]
