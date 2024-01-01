@@ -54,7 +54,7 @@ const navigate = useNavigate()
       <div className="job-list">
         {internships &&
           internships.map((data) => (
-            <div className="single-job">
+            <div key={data.id} className="single-job">
               <img
                 src={data.logo}
                 alt=""

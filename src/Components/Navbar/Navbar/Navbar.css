@@ -61,3 +61,15 @@
 .user-details:hover {
   background-color: rgba(15, 105, 231, 0.35);
 }
+.logout-btn{
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.logout-btn:hover{
+  background-color:#c9d4e6;
+}

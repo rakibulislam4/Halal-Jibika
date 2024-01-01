@@ -8,6 +8,7 @@ import NotFound from "./NotFound/NotFound";
 import SignUp from "./SignUp/SignUp";
 import Jobs from "./Jobs/Jobs";
 import Favorite from "./Favorite/Favorite";
+import AddJobs from "./AddJobs/AddJobs";
 
 const routes = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const routes = createBrowserRouter([
         path: "/signup",
         element: <SignUp />,
       },
+      {
+        path:"/addjobs",
+        element:<AddJobs/>
+      }
     ],
   },
 

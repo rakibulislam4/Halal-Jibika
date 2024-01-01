@@ -2,34 +2,42 @@ import { FaGithub } from "react-icons/fa";
 import "./SignUp.css";
 import { FcGoogle } from "react-icons/fc";
 import { Audio } from "react-loader-spinner";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGithub,
+  useSignInWithGoogle,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
+
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import auth from "./../../FIrebase/firebase";
 import { useState } from "react";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  GithubAuthProvider,
-  createUserWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
+import Loading from "../../Components/Loading/Loading";
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [input, setInput] = useState("");
   const [userData, setUserData] = useState({});
   const [password, setPassword] = useState("");
+  const [createUserWithEmailAndPassword, emailUser, emailLoading, emailError] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, error] = useUpdateProfile(auth);
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+    const [signInWithGithub, gitHubUser, gitHubLoading, gitHubError] = useSignInWithGithub(auth);
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
   const passwordRegex =
+    // eslint-disable-next-line no-useless-escape
     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+={}\[\]:;<>,.?/\|~-]).{8,}$/;
 
   const isValidPassword = (password) => {
     return passwordRegex.test(password);
   };
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -41,20 +49,34 @@ export default function SignUp() {
       email,
       password,
     }));
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        localStorage.setItem("userData", JSON.stringify({ userData, user }));
-        console.log("User registered successfully:", user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Error registering user:", errorCode, errorMessage);
-      });
-
-    <Navigate to={"/"} />;
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({
+      displayName: name,
+      photoURL: "https://picsum.photos/200/300",
+    });
+    navigate("/");
   };
+  const googleLogin = async () => {
+    await signInWithGoogle();
+    navigate("/");
+  };
+
+  
+  const gitHub = async () => {
+    await signInWithGithub();
+    navigate("/");
+  };
+
+
+  if (emailLoading || googleLoading || updating || gitHubLoading) { 
+    return <Loading />;
+  }
+  if (emailError || googleError || gitHubError) {
+    return <p>{emailError.message}</p>;
+  }
+  if (emailUser || googleUser || gitHubUser) {
+    console.log(emailUser);
+  }
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
@@ -149,10 +171,13 @@ export default function SignUp() {
             </div>
             <p style={{ marginTop: "0.5rem" }}>Sign-in or Sign-Up with</p>
             <div className="sign-in-icons">
-              <button className="google">
+              <button
+                onClick={googleLogin}
+                className="google"
+              >
                 <FcGoogle />
               </button>
-              <button className="github">
+              <button onClick={gitHub} className="github">
                 <FaGithub />
               </button>
             </div>

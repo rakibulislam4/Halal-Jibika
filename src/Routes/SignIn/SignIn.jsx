@@ -1,16 +1,73 @@
-import { Link } from "react-router-dom";
+/* eslint-disable react/no-unescaped-entities */
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { Audio } from "react-loader-spinner";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-
+import { useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import "./SignIn.css";
+import auth from "./../../FIrebase/firebase";
+import { useState } from "react";
+import Loading from "../../Components/Loading/Loading";
+// import { Navigate } from 'react-router-dom';
 export default function SignIn() {
+  const [userData, setUserData] = useState({});
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [input, setInput] = useState("");
+  const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
+    useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+    const [signInWithGithub, gitHubUser, gitHubLoading, gitHubError] = useSignInWithGithub(auth);
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+  const passwordRegex =
+    // eslint-disable-next-line no-useless-escape
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+={}\[\]:;<>,.?/\|~-]).{8,}$/;
 
-
-
-  const handleSubmit = (e) => {
+  const isValidPassword = (password) => {
+    return passwordRegex.test(password);
+  };
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    setUserData((prevData) => ({
+      ...prevData,
+      email,
+      password,
+    }));
+    await signInWithEmailAndPassword(email, password);
+    navigate("/");
+  };
+  if (emailLoading || googleLoading  || gitHubLoading) { 
+    return <Loading />;
+  }
+  if (emailError || googleError || gitHubError) {
+    return <p>{emailError.message}</p>;
+  }
+  if (emailUser || googleUser || gitHubUser) {
+    console.log(emailUser);
+  }
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+  const googleLogin = async () => {
+    await signInWithGoogle();
+    navigate("/");
   };
 
+  
+  const gitHub = async () => {
+    await signInWithGithub();
+    navigate("/");
+  };
   return (
     <>
       <div className="sign-in-main">
@@ -24,17 +81,46 @@ export default function SignIn() {
               <form onSubmit={handleSubmit}>
                 <div className="form">
                   <input
-                    type="email"
+                    value={input}
+                    id={validateEmail(input) ? "valid-email" : "invalid-email"}
+                    onChange={(e) => setInput(e.target.value)}
+                    type="text"
                     placeholder="Email"
                     name="email"
                   />
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                  />
+                  {
+                    <p className="invalid-email-message">
+                      {validateEmail(input) ? " " : "Please enter valid Email"}
+                    </p>
+                  }
+
+                  <div className="password-container">
+                    <input
+                      id="valid-password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Password"
+                      name="password"
+                    />
+                    <button
+                      type="button"
+                      className="password-toggle"
+                      onClick={togglePasswordVisibility}
+                      aria-label={
+                        showPassword ? "Hide password" : "Show password"
+                      }
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </button>
+                  </div>
+
                   <button
-                    className="sign-in-btn"
+                    disabled={!validateEmail(input) || password.length == 0}
+                    className={
+                      !validateEmail(input) || password.length == 0
+                        ? "disabled-btn"
+                        : "sign-in-btn"
+                    }
                     type="submit"
                   >
                     Sign In
@@ -49,10 +135,10 @@ export default function SignIn() {
             </div>
             <p style={{ marginTop: "0.5rem" }}>Sign-in or Sign-Up with</p>
             <div className="sign-in-icons">
-              <button className="google">
+              <button onClick={googleLogin} className="google">
                 <FcGoogle />
               </button>
-              <button className="github">
+              <button onClick={gitHub} className="github">
                 <FaGithub />
               </button>
             </div>
