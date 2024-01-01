@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-key */
 import "./LatestJobs.css";
 import { useNavigate } from "react-router-dom";
-// Creating an array to store internship objects
 const internships = [
   {
     id: 1,
@@ -44,6 +43,7 @@ const internships = [
     description: 'This is an internship opportunity from NASA'
   }
 ];
+
 export default function LatestJobs() {
 
 

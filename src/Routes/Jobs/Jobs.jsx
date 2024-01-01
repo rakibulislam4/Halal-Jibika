@@ -1,9 +1,11 @@
-import { useState } from "react";
 import "./Jobs.css";
+import { useState } from "react";
 import { useEffect } from "react";
+import Modal from "../../Components/Model/Model";
 
 export default function Jobs() {
   const [apiData, setApiData] = useState([]);
+  const [selectedData, setSelectedData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +25,14 @@ export default function Jobs() {
     fetchData();
   }, []);
 
+  const handleModalOpen = (data) => {
+    setSelectedData(data);
+  };
+
+  const handleModalClose = () => {
+    setSelectedData(null);
+  };
+
   return (
     <div className="jobs">
       {apiData &&
@@ -41,16 +51,24 @@ export default function Jobs() {
               </div>
               <div className="job-details">
                 <h4>{data.title}</h4>
-                <p>{data.description}</p>
                 <p>{data.position}</p>
+                <p>{data.description}</p>
                 <p>
-                  <span> $100500 / Month</span>{" "}
+                  <span> 15000$ / Month</span>{" "}
                 </p>
-                <button>See Details</button>
+                <button onClick={() => handleModalOpen(data)}>
+                  See Details
+                </button>
               </div>
             </div>
           </div>
         ))}
+      {selectedData && (
+        <Modal
+          data={selectedData}
+          onClose={handleModalClose}
+        />
+      )}
     </div>
   );
 }

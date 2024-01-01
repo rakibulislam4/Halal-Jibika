@@ -1,20 +1,20 @@
 import { FaGithub } from "react-icons/fa";
 import "./SignUp.css";
 import { FcGoogle } from "react-icons/fc";
-import { Audio } from "react-loader-spinner";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGithub,
   useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
-
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import auth from "./../../FIrebase/firebase";
 import { useState } from "react";
 import Loading from "../../Components/Loading/Loading";
 export default function SignUp() {
+  // ........................................Declared all hooks...................................................//
+
   const [showPassword, setShowPassword] = useState(false);
   const [input, setInput] = useState("");
   const [userData, setUserData] = useState({});
@@ -24,7 +24,13 @@ export default function SignUp() {
   const [updateProfile, updating, error] = useUpdateProfile(auth);
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
-    const [signInWithGithub, gitHubUser, gitHubLoading, gitHubError] = useSignInWithGithub(auth);
+  const [signInWithGithub, gitHubUser, gitHubLoading, gitHubError] =
+    useSignInWithGithub(auth);
+
+  //..........................................End of hooks declaration.............................................//
+
+  //................................................Regex for email and password...............................//
+
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -36,6 +42,10 @@ export default function SignUp() {
   const isValidPassword = (password) => {
     return passwordRegex.test(password);
   };
+
+  //..................................................End of Regex for email and password...............................//
+
+  //.............................................Main submit Function ...........................................//
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,19 +66,23 @@ export default function SignUp() {
     });
     navigate("/");
   };
+
+  //.............................................End of Main submit Function ...........................................//
+
+  //.............................................Google and Github login Function .........................................//
   const googleLogin = async () => {
     await signInWithGoogle();
     navigate("/");
   };
 
-  
   const gitHub = async () => {
     await signInWithGithub();
     navigate("/");
   };
+  //.............................................End of Google and Github login Function ..............................//
 
-
-  if (emailLoading || googleLoading || updating || gitHubLoading) { 
+  //.............................................Error handling ..........................................................//
+  if (emailLoading || googleLoading || updating || gitHubLoading) {
     return <Loading />;
   }
   if (emailError || googleError || gitHubError) {
@@ -77,10 +91,12 @@ export default function SignUp() {
   if (emailUser || googleUser || gitHubUser) {
     console.log(emailUser);
   }
-
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
+
+  //.............................................End of Error handling ................................................//
+
   return (
     <>
       <div className="sign-in-main">
@@ -177,7 +193,10 @@ export default function SignUp() {
               >
                 <FcGoogle />
               </button>
-              <button onClick={gitHub} className="github">
+              <button
+                onClick={gitHub}
+                className="github"
+              >
                 <FaGithub />
               </button>
             </div>

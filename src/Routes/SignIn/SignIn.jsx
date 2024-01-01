@@ -1,36 +1,40 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { Audio } from "react-loader-spinner";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import { useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGithub,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import "./SignIn.css";
 import auth from "./../../FIrebase/firebase";
 import { useState } from "react";
 import Loading from "../../Components/Loading/Loading";
-// import { Navigate } from 'react-router-dom';
 export default function SignIn() {
+  // ........................................Declared all hooks...................................................//
+
   const [userData, setUserData] = useState({});
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [input, setInput] = useState("");
   const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
     useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle, googleUser, googleLoading, googleError] =
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
-    const [signInWithGithub, gitHubUser, gitHubLoading, gitHubError] = useSignInWithGithub(auth);
+  const [signInWithGithub, gitHubUser, gitHubLoading, gitHubError] =
+    useSignInWithGithub(auth);
+
+  //..................................................Regex for email and password...............................//
+
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
-  const passwordRegex =
-    // eslint-disable-next-line no-useless-escape
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+={}\[\]:;<>,.?/\|~-]).{8,}$/;
 
-  const isValidPassword = (password) => {
-    return passwordRegex.test(password);
-  };
+  //.............................. Main submit Function ...........................................//
+
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +49,10 @@ export default function SignIn() {
     await signInWithEmailAndPassword(email, password);
     navigate("/");
   };
-  if (emailLoading || googleLoading  || gitHubLoading) { 
+
+  //.....................................................Error Handling..........................................//
+
+  if (emailLoading || googleLoading || gitHubLoading) {
     return <Loading />;
   }
   if (emailError || googleError || gitHubError) {
@@ -55,19 +62,26 @@ export default function SignIn() {
     console.log(emailUser);
   }
 
+  //..................................................Password Visibility Function..................................//
+
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
+
+  //..................................................Google and Github Login Function....................................//
+
   const googleLogin = async () => {
     await signInWithGoogle();
     navigate("/");
   };
 
-  
   const gitHub = async () => {
     await signInWithGithub();
     navigate("/");
   };
+
+  //..................................................Main Function..........................................//
+
   return (
     <>
       <div className="sign-in-main">
@@ -135,10 +149,16 @@ export default function SignIn() {
             </div>
             <p style={{ marginTop: "0.5rem" }}>Sign-in or Sign-Up with</p>
             <div className="sign-in-icons">
-              <button onClick={googleLogin} className="google">
+              <button
+                onClick={googleLogin}
+                className="google"
+              >
                 <FcGoogle />
               </button>
-              <button onClick={gitHub} className="github">
+              <button
+                onClick={gitHub}
+                className="github"
+              >
                 <FaGithub />
               </button>
             </div>

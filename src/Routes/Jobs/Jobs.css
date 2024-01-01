@@ -1,28 +1,28 @@
-.jobs img{
-height: 50px;
-width: 50px;
-/* border-radius: 50%; */
+.jobs img {
+  height: 50px;
+  width: 50px;
+  /* border-radius: 50%; */
 }
-.jobs{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem ;
+.jobs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.company-name-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.company-list {
+  max-width: 350px;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: #e6ebf1;
+}
+.jobs span {
+  color: #2db346;
+}
 
-}
-.company-name-logo{
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.company-list{
-    max-width: 328px;
-    padding: 1.5rem;
-    border-radius: 10px;
-    background-color:#e6ebf1 ;
-}
-.jobs span{
-    color: #2db346;
-}
