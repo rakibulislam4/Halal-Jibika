@@ -1,4 +1,5 @@
 import "./Jobs.css";
+import Swal from 'sweetalert2'
 import { CiStar } from "react-icons/ci";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
@@ -8,7 +9,7 @@ import Loading from "./../../Components/Loading/Loading";
 
 export default function Jobs() {
   const [apiData, setApiData] = useState([]);
-  const [isTrue, setIsTrue] = useState(false);
+  const [newdata, setnewData] = useState(null);
   const [selectedData, setSelectedData] = useState(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -28,7 +29,7 @@ export default function Jobs() {
       }
     };
     fetchData();
-  }, []);
+  }, [newdata]);
 
   const handleModalOpen = (data) => {
     setSelectedData(data);
@@ -38,24 +39,38 @@ export default function Jobs() {
   const handleModalClose = () => {
     setSelectedData(null);
   };
-  const handleFavorite =async () => {
-       apiData.map(async (data) => {
-      if (!("isFavorite" in data)) {
-        data.isFavorite = false;
-      }
-      await fetch(`http://localhost:9000/jobs/${data.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...data, isFavorite: true }),
-      });
-
-      setIsTrue(!isTrue);
-      console.log(data);
-
+  const handleFavorite = async (data) => {
+    console.log(data.id);
+    if (!("isFavorite" in data)) {
+      data.isFavorite = false;
+    }
+    await fetch(`http://localhost:9000/jobs/${data.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...data, isFavorite: true }),
+    });
+    setnewData(data);
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Successfully added to favorites",
+      showConfirmButton: false,
+      timer: 1000
     });
   };
+  const handleFavorite2 = async (data) => {
+    await fetch(`http://localhost:9000/jobs/${data.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...data, isFavorite: false }),
+    });
+    setnewData(data);
+  };
+
   return (
     <>
       <div className="jobs">
@@ -96,15 +111,20 @@ export default function Jobs() {
                         <button onClick={() => handleModalOpen(data)}>
                           See Details
                         </button>
-                        {isTrue ? (
+                        {data.isFavorite ? (
                           <button
-                            onClick={handleFavorite}
+                            onClick={() => handleFavorite2(data)}
+                            key={data.id}
                             className="star"
                           >
                             <FaStar />
                           </button>
                         ) : (
-                          <button className="star">
+                          <button
+                            key={data.id}
+                            onClick={() => handleFavorite(data)}
+                            className="star"
+                          >
                             <CiStar />
                           </button>
                         )}
