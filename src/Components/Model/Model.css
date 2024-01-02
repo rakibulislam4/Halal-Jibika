@@ -9,7 +9,7 @@
   max-width: 90%;
   width: 700px;
   height: 500px;
-  z-index: 9999;
+  /* z-index: 9999; */
   animation-name: modal;
   animation-duration: 0.2s;
   animation-timing-function: ease;

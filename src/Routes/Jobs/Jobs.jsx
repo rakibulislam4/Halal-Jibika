@@ -8,7 +8,7 @@ import Loading from "./../../Components/Loading/Loading";
 
 export default function Jobs() {
   const [apiData, setApiData] = useState([]);
-  const [isTrue, setIsTrue] = useState(true);
+  const [isTrue, setIsTrue] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -32,19 +32,45 @@ export default function Jobs() {
 
   const handleModalOpen = (data) => {
     setSelectedData(data);
+    console.log("this is api data", selectedData);
   };
 
   const handleModalClose = () => {
     setSelectedData(null);
   };
+  const handleFavorite =async () => {
+       apiData.map(async (data) => {
+      if (!("isFavorite" in data)) {
+        data.isFavorite = false;
+      }
+      await fetch(`http://localhost:9000/jobs/${data.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...data, isFavorite: true }),
+      });
 
+      setIsTrue(!isTrue);
+      console.log(data);
+
+    });
+  };
   return (
     <>
       <div className="jobs">
         {loading ? (
           <Loading />
         ) : (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem",alignItems: "center", justifyContent: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1rem",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             {apiData &&
               apiData.map((data) => (
                 <div
@@ -71,12 +97,15 @@ export default function Jobs() {
                           See Details
                         </button>
                         {isTrue ? (
-                          <button className="star">
-                            <CiStar />
+                          <button
+                            onClick={handleFavorite}
+                            className="star"
+                          >
+                            <FaStar />
                           </button>
                         ) : (
                           <button className="star">
-                            <FaStar />
+                            <CiStar />
                           </button>
                         )}
                       </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Swal from "sweetalert2";
 import "./Model.css";
 import { useEffect, useState } from "react";
@@ -5,6 +6,9 @@ import { useEffect, useState } from "react";
 const Modal = ({ data, onClose }) => {
   const [applied, setApplied] = useState(data.isApplied || false);
   const handleApply = async () => {
+    if (!("isApplied" in data)) {
+      data.isApplied = false;
+    }
     await fetch(`http://localhost:9000/jobs/${data.id}`, {
       method: "PUT",
       headers: {
@@ -13,17 +17,23 @@ const Modal = ({ data, onClose }) => {
       body: JSON.stringify({ ...data, isApplied: true }),
     });
     setApplied(true);
-  
-  
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "You have successfully applied for this position",
-        showConfirmButton: false,
-        timer: 3000,
-      });
-    
+
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "You have successfully applied for this position",
+      showConfirmButton: false,
+      timer: 3000,
+    });
   };
+
+  useEffect(() => {
+    if (!("logo" in data)) {
+      data.logo = "https://picsum.photos/200/300";
+    }
+    console.log(data);
+  }, [data]);
+
   const handleApplied = () => {
     Swal.fire({
       position: "top-end",
@@ -32,11 +42,10 @@ const Modal = ({ data, onClose }) => {
       showConfirmButton: false,
       timer: 3000,
     });
-  }
+  };
 
   return (
     <div className="modal-overlay">
-    
       <div className="modal-wrap">
         <div className="modal-content">
           <div className="modal-header">
@@ -149,7 +158,12 @@ const Modal = ({ data, onClose }) => {
                 Apply Now
               </button>
             ) : (
-              <button onClick={handleApplied} className="apply-now">Applied</button>
+              <button
+                onClick={handleApplied}
+                className="apply-now"
+              >
+                Applied
+              </button>
             )}
           </div>
         </div>
