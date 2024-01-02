@@ -1,0 +1,15 @@
+.applied {
+  img {
+    height: 50px;
+    width: 50px;
+  }
+
+  span {
+    color: #2db346;
+  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
