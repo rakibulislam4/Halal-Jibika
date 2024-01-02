@@ -11,7 +11,7 @@
   height: 500px;
   z-index: 9999;
   animation-name: modal;
-  animation-duration: 1s;
+  animation-duration: 0.2s;
   animation-timing-function: ease;
 }
 
@@ -63,6 +63,7 @@
 .modal-btn {
   display: flex;
   gap: 1rem;
+
 }
 .modal-btn button {
   padding: 0.7rem 1rem;
@@ -75,4 +76,3 @@
 .list li {
   list-style: disc;
 }
-

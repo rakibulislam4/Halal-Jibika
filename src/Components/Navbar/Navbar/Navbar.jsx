@@ -48,6 +48,7 @@ export default function Navbar() {
           <NavLink to="/about">About</NavLink>
           <NavLink to="/contact">Contact</NavLink>
           <NavLink to="/favorite">Favorite</NavLink>
+          <NavLink to="/applied">Applied</NavLink>
         </div>
         <div className="nav-auth">
           {user ? (
@@ -74,17 +75,24 @@ export default function Navbar() {
 
           <div className="user-details">
             {user ? (
-              <div style={{ display: "flex", alignItems: "center", gap: "0.2rem" }}>
-            <img style={{ width: "30px", height: "30px", borderRadius: "50%" }} src={user.photoURL} alt="" />
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "0.2rem" }}
+              >
+                <img
+                  style={{ width: "30px", height: "30px", borderRadius: "50%" }}
+                  src={user.photoURL}
+                  alt=""
+                />
                 <p>{user.displayName}</p>
               </div>
             ) : (
-              <div style={{ display: "flex", alignItems: "center", gap: "0.2rem" }}>
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "0.2rem" }}
+              >
                 <FaUserCheck style={{ color: "#0f69e7", fontSize: "1.2rem" }} />
                 <p>Guest</p>
               </div>
             )}
-         
           </div>
         </div>
       </nav>

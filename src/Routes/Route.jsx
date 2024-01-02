@@ -9,6 +9,8 @@ import SignUp from "./SignUp/SignUp";
 import Jobs from "./Jobs/Jobs";
 import Favorite from "./Favorite/Favorite";
 import AddJobs from "./AddJobs/AddJobs";
+import Applied from "./Applied/Applied";
+
 
 const routes = createBrowserRouter([
   {
@@ -44,9 +46,14 @@ const routes = createBrowserRouter([
         element: <SignUp />,
       },
       {
-        path:"/addjobs",
-        element:<AddJobs/>
-      }
+        path: "/addjobs",
+        element: <AddJobs />,
+      },
+      {
+        path: "/applied",
+        element: <Applied />,
+      },
+    
     ],
   },
 

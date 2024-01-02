@@ -72,5 +72,16 @@
   height: 100%;
   background-color: #c9d4e6;
   border-radius: none;
-  z-index: -1;  
+  z-index: -1;
+}
+.star {
+  font-size: 35px !important;
+  background: none !important;
+  color: black !important;
+  border: none !important;
+  cursor: pointer !important;
+  width: 20px !important;
+  margin-left: 8rem !important;
+  margin-top: 0.3rem !important;
+  padding: 0.5rem 0.5rem !important;
 }

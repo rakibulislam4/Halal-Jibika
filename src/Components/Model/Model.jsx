@@ -1,8 +1,42 @@
+import Swal from "sweetalert2";
 import "./Model.css";
+import { useEffect, useState } from "react";
 
 const Modal = ({ data, onClose }) => {
+  const [applied, setApplied] = useState(data.isApplied || false);
+  const handleApply = async () => {
+    await fetch(`http://localhost:9000/jobs/${data.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...data, isApplied: true }),
+    });
+    setApplied(true);
+  
+  
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "You have successfully applied for this position",
+        showConfirmButton: false,
+        timer: 3000,
+      });
+    
+  };
+  const handleApplied = () => {
+    Swal.fire({
+      position: "top-end",
+      icon: "error",
+      title: "You have already applied for this position",
+      showConfirmButton: false,
+      timer: 3000,
+    });
+  }
+
   return (
     <div className="modal-overlay">
+    
       <div className="modal-wrap">
         <div className="modal-content">
           <div className="modal-header">
@@ -107,7 +141,16 @@ const Modal = ({ data, onClose }) => {
             >
               Go Back
             </button>
-            <button className="apply-now">Apply Now</button>
+            {!applied ? (
+              <button
+                onClick={handleApply}
+                className="apply-now"
+              >
+                Apply Now
+              </button>
+            ) : (
+              <button onClick={handleApplied} className="apply-now">Applied</button>
+            )}
           </div>
         </div>
       </div>
