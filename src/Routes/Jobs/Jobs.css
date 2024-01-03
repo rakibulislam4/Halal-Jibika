@@ -45,6 +45,26 @@
 .company-list:hover{
   transform: translateY(-10px);
 }
+
+.company-details-logo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.jobs-btn{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#edit-btn{
+  padding: 0;
+  width: auto;
+  background-color: transparent ;
+  color: black;
+  font-size: 30px;
+}
+
 @media screen and (max-width: 450px) {
 .jobs{
   padding: 1rem;

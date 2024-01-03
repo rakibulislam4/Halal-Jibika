@@ -154,20 +154,23 @@
   border: 1px solid black;
   transition: 0.22s;
 }
-.password-toggle {
+
+.password-toggle-eye{
   position: absolute;
   border: none;
   background: transparent;
   cursor: pointer;
   bottom: 11%;
-  left: 26rem;
+  left: 22rem;
 }
-
 .password-container {
   position: relative;
 }
 @media screen and (max-width:450px){
   .sign-in{
     width: 23rem;
+  }
+  .password-toggle-eye{
+    left: 19rem;
   }
 }

@@ -1,6 +1,5 @@
-
-import { useState } from 'react';
-import './AddJobs.css';
+import { useState } from "react";
+import "./AddJobs.css";
 import Swal from "sweetalert2";
 export default function AddJobs() {
   const [formData, setFormData] = useState({
@@ -8,17 +7,17 @@ export default function AddJobs() {
     companyName: "",
     title: "",
     position: "",
-    description: ""
+    description: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:9000/jobs', {
-        method: 'POST',
+      const response = await fetch("http://localhost:9000/jobs", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -32,12 +31,12 @@ export default function AddJobs() {
           timer: 3000,
         });
       } else {
-        console.error('Error:', response.statusText);
-        alert('Failed to submit data. Please try again.');
+        console.error("Error:", response.statusText);
+        alert("Failed to submit data. Please try again.");
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('An error occurred while submitting data.');
+      console.error("Error:", error);
+      alert("An error occurred while submitting data.");
     }
 
     // Clear the form inputs after submission
@@ -46,7 +45,7 @@ export default function AddJobs() {
       companyName: "",
       title: "",
       position: "",
-      description: ""
+      description: "",
     });
   };
 
@@ -54,16 +53,20 @@ export default function AddJobs() {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
   return (
     <div className="form-container">
-      <form className="job-form" onSubmit={handleSubmit}>
+      <form
+        className="job-form"
+        onSubmit={handleSubmit}
+      >
         <div className="form-group">
           <label htmlFor="id">ID:</label>
-          <input
+          <input style={{borderRadius:"15px",border:"none",padding:"5px",backgroundColor:"#f0f6fe"}} 
+            className="addJob-input"
             type="number"
             name="id"
             value={formData.id}
@@ -74,6 +77,7 @@ export default function AddJobs() {
         <div className="form-group">
           <label htmlFor="companyName">Company Name:</label>
           <input
+            className="addJob-input"
             type="text"
             name="companyName"
             value={formData.companyName}
@@ -84,6 +88,7 @@ export default function AddJobs() {
         <div className="form-group">
           <label htmlFor="title">Title:</label>
           <input
+            className="addJob-input"
             type="text"
             name="title"
             value={formData.title}
@@ -94,6 +99,7 @@ export default function AddJobs() {
         <div className="form-group">
           <label htmlFor="position">Position:</label>
           <input
+            className="addJob-input"
             type="text"
             name="position"
             value={formData.position}
@@ -104,6 +110,7 @@ export default function AddJobs() {
         <div className="form-group">
           <label htmlFor="description">Short Description:</label>
           <textarea
+            className="addJob-input"
             rows="4"
             name="description"
             value={formData.description}
@@ -112,7 +119,10 @@ export default function AddJobs() {
           />
         </div>
         <div className="form-group">
-          <button type="submit" className="submit-button">
+          <button
+            type="submit"
+            className="submit-button"
+          >
             Submit
           </button>
         </div>

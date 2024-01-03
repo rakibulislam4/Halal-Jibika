@@ -10,7 +10,7 @@ import Jobs from "./Jobs/Jobs";
 import Favorite from "./Favorite/Favorite";
 import AddJobs from "./AddJobs/AddJobs";
 import Applied from "./Applied/Applied";
-
+import PrivetRoutes from "./PrivetRoutes";
 
 const routes = createBrowserRouter([
   {
@@ -35,7 +35,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/favorite",
-        element: <Favorite />,
+        element: (
+          <PrivetRoutes>
+            <Favorite />
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/login",
@@ -47,13 +51,20 @@ const routes = createBrowserRouter([
       },
       {
         path: "/addjobs",
-        element: <AddJobs />,
+        element: (
+          <PrivetRoutes>
+            <AddJobs />
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/applied",
-        element: <Applied />,
+        element: (
+          <PrivetRoutes>
+            <Applied />
+          </PrivetRoutes>
+        ),
       },
-    
     ],
   },
 

@@ -119,9 +119,9 @@ export default function SignIn() {
                       placeholder="Password"
                       name="password"
                     />
-                    <button
+                    <button 
                       type="button"
-                      className="password-toggle"
+                      className="password-toggle-eye"
                       onClick={togglePasswordVisibility}
                       aria-label={
                         showPassword ? "Hide password" : "Show password"

@@ -1,5 +1,17 @@
-@media screen and (max-width:450px){
+
+  .password-toggle {
+    position: absolute;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    bottom: 11%;
+    left: 26rem;
+  }
+  @media screen and (max-width:450px){
     .sign-in{
-      width: 23rem;
+      width: 21rem;
+    }
+    .password-toggle{
+      left: 17rem;
     }
   }

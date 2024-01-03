@@ -4,14 +4,17 @@ import { CiStar } from "react-icons/ci";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useEffect } from "react";
+import { CiEdit } from "react-icons/ci";
 import Modal from "../../Components/Model/Model";
 import Loading from "./../../Components/Loading/Loading";
+import JobEdit from "../../Components/JobEdit/JobEdit";
 
 export default function Jobs() {
   const [apiData, setApiData] = useState([]);
   const [newdata, setnewData] = useState(null);
   const [selectedData, setSelectedData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [editData, setEditData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -19,7 +22,6 @@ export default function Jobs() {
         if (response.ok) {
           const data = await response.json();
           setApiData(data);
-     
         } else {
           throw new Error("Failed to fetch data");
         }
@@ -72,7 +74,13 @@ export default function Jobs() {
     });
     setnewData(data);
   };
+const handleEditBtn = (data)=>{
+  setEditData(data);
 
+}
+const handleJobClose =()=> {
+  setEditData(null);
+}
   return (
     <>
       <div className="jobs">
@@ -95,25 +103,15 @@ export default function Jobs() {
                   key={data.id}
                 >
                   <div className="single-company-list">
-                    <div className="company-name-logo">
-                      <img
-                        src={data.logo}
-                        alt=""
-                      />
-                      <h1>{data.companyName}</h1>
-                    </div>
-                    <div className="job-details">
-                      <h4>{data.title}</h4>
-                      <p>{data.position}</p>
-                      <p>{data.description}</p>
-                      <p>
-                        <span> 15000$ / Month</span>{" "}
-                      </p>
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <button onClick={() => handleModalOpen(data)}>
-                          See Details
-                        </button>
-                        {data.isFavorite ? (
+                    <div className="company-details-logo">
+                      <div className="company-name-logo">
+                        <img
+                          src={data.logo}
+                          alt=""
+                        />
+                        <h1>{data.companyName}</h1>
+                      </div>
+                      {data.isFavorite ? (
                           <button
                             onClick={() => handleFavorite2(data)}
                             key={data.id}
@@ -130,6 +128,23 @@ export default function Jobs() {
                             <CiStar />
                           </button>
                         )}
+
+                    </div>
+
+                    <div className="job-details">
+                      <h4>{data.title}</h4>
+                      <p>{data.position}</p>
+                      <p>{data.description}</p>
+                      <p>
+                        <span> 15000$ / Month</span>{" "}
+                      </p>
+                      <div className="jobs-btn">
+                        <button onClick={() => handleModalOpen(data)}>
+                          See Details
+                        </button>
+                        <button onClick={() => handleEditBtn(data)} id="edit-btn"> 
+                        <CiEdit />
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -141,6 +156,15 @@ export default function Jobs() {
                 onClose={handleModalClose}
               />
             )}
+            
+            {editData && (
+              <JobEdit
+                data={editData}
+                onClose={handleJobClose}
+                setNewData={setnewData}
+              />
+            )}
+
           </div>
         )}
       </div>

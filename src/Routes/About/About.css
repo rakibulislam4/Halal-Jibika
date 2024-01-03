@@ -1,0 +1,40 @@
+
+.about-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .about-us-container h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-container h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .about-us-container p {
+    margin-bottom: 15px;
+  }
+  
+  .about-us-container ul {
+    padding-left: 20px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .about-us-container {
+      padding: 10px;
+    }
+  
+    .about-us-container h2 {
+      font-size: 1.5em;
+    }
+  
+    .about-us-container h3 {
+      font-size: 1.2em;
+    }
+  }

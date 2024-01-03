@@ -81,7 +81,7 @@
   border: none !important;
   cursor: pointer !important;
   width: 20px !important;
-  margin-left: 8rem !important;
+  /* margin-left: 8rem !important; */
   margin-top: 0.3rem !important;
   padding: 0.5rem 0.5rem !important;
 }
