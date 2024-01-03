@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useEffect } from "react";
 import { CiEdit } from "react-icons/ci";
+import { RiDeleteBin4Fill } from "react-icons/ri";
 import Modal from "../../Components/Model/Model";
 import Loading from "./../../Components/Loading/Loading";
 import JobEdit from "../../Components/JobEdit/JobEdit";
@@ -74,13 +75,19 @@ export default function Jobs() {
     });
     setnewData(data);
   };
-const handleEditBtn = (data)=>{
-  setEditData(data);
+  const handleEditBtn = (data) => {
+    setEditData(data);
+  };
+  const handleJobClose = () => {
+    setEditData(null);
+  };
 
-}
-const handleJobClose =()=> {
-  setEditData(null);
-}
+  const handleDelete = async (data) => {
+    await fetch(`http://localhost:9000/jobs/${data.id}`, {
+      method: "DELETE",
+    });
+    setnewData(data);
+  }
   return (
     <>
       <div className="jobs">
@@ -112,23 +119,22 @@ const handleJobClose =()=> {
                         <h1>{data.companyName}</h1>
                       </div>
                       {data.isFavorite ? (
-                          <button
-                            onClick={() => handleFavorite2(data)}
-                            key={data.id}
-                            className="star"
-                          >
-                            <FaStar />
-                          </button>
-                        ) : (
-                          <button
-                            key={data.id}
-                            onClick={() => handleFavorite(data)}
-                            className="star"
-                          >
-                            <CiStar />
-                          </button>
-                        )}
-
+                        <button
+                          onClick={() => handleFavorite2(data)}
+                          key={data.id}
+                          className="star"
+                        >
+                          <FaStar />
+                        </button>
+                      ) : (
+                        <button
+                          key={data.id}
+                          onClick={() => handleFavorite(data)}
+                          className="star"
+                        >
+                          <CiStar />
+                        </button>
+                      )}
                     </div>
 
                     <div className="job-details">
@@ -142,8 +148,14 @@ const handleJobClose =()=> {
                         <button onClick={() => handleModalOpen(data)}>
                           See Details
                         </button>
-                        <button onClick={() => handleEditBtn(data)} id="edit-btn"> 
-                        <CiEdit />
+                        <button id="edit-btn" onClick={() => handleDelete(data)}>
+                          <RiDeleteBin4Fill />
+                        </button>
+                        <button
+                          onClick={() => handleEditBtn(data)}
+                          id="edit-btn"
+                        >
+                          <CiEdit />
                         </button>
                       </div>
                     </div>
@@ -156,7 +168,7 @@ const handleJobClose =()=> {
                 onClose={handleModalClose}
               />
             )}
-            
+
             {editData && (
               <JobEdit
                 data={editData}
@@ -164,7 +176,6 @@ const handleJobClose =()=> {
                 setNewData={setnewData}
               />
             )}
-
           </div>
         )}
       </div>

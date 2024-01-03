@@ -31,7 +31,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/jobs",
-        element: <Jobs />,
+        element: (
+          <PrivetRoutes>
+            <Jobs />,
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/favorite",
