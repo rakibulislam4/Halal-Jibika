@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Contact.css'; // Import a separate CSS file for styling
+import Swal from 'sweetalert2';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,11 +16,28 @@ const Contact = () => {
       [name]: value
     });
   };
-
+  const resetFormdata = () => {
+    setFormData({
+      name: '',
+      email: '',
+      message: ''
+    });
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission - you can implement your logic here
-    console.log(formData); // For demonstration, logs form data to the console
+
+    setTimeout(() => {
+      resetFormdata()
+    },1000)
+    setTimeout(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your message was received by our team",
+        showConfirmButton: false,
+        timer: 2000,
+      });    
+    },1500)
   };
 
   return (
