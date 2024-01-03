@@ -51,7 +51,7 @@ export default function LatestJobs() {
 const navigate = useNavigate()
   return (
     <div>
-      <div className="job-list">
+      <div data-aos="zoom-in-up" className="job-list">
         {internships &&
           internships.map((data) => (
             <div key={data.id} className="single-job">

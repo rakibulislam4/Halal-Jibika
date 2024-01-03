@@ -1,0 +1,8 @@
+.remove-btn:hover{
+    background-color: red !important;
+}
+@media screen and (max-width: 480px){
+     .job-search{
+        width: 19rem;
+     }
+}

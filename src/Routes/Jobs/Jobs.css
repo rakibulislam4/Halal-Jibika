@@ -21,8 +21,32 @@
   padding: 1.5rem;
   border-radius: 10px;
   background-color: #e6ebf1;
+  transition: 0.25s;
 }
 .jobs span {
   color: #2db346;
 }
-
+.company-list{
+  animation-name: company;
+  animation-duration: 0.5s;
+}
+@keyframes company {
+  from{
+    opacity: 0;
+    scale: 0;
+    transform: translateY(50px);
+  }
+  to{
+    opacity: 1;
+    scale: 1;
+    transform: translateY(0);
+  }
+}
+.company-list:hover{
+  transform: translateY(-10px);
+}
+@media screen and (max-width: 450px) {
+.jobs{
+  padding: 1rem;
+}
+}

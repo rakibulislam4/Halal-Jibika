@@ -40,7 +40,7 @@ const Applied = () => {
   };
 
   return (
-    <div style={{ padding: "0 0 20px 20px" }}>
+    <div style={{ padding: "20px" }}>
       {filteredData.length <= 0 ? (
         <div style={{ textAlign: "center" }}>
           <h1 style={{ textAlign: "center", marginBottom: "10px" }}>
@@ -51,7 +51,7 @@ const Applied = () => {
               Strop doing nothing and get yourself a job you lazy human.
             </p>
           </big>
-          <img src="../../../public/oversight.gif"></img>
+          <img className="job-search" src="../../../public/oversight.gif"></img>
         </div>
       ) : (
         <div>

@@ -56,7 +56,7 @@ export default function SignIn() {
     return <Loading />;
   }
   if (emailError || googleError || gitHubError) {
-    return <p>{emailError.message}</p>;
+    return <p>{emailError?.message}</p>;
   }
   if (emailUser || googleUser || gitHubUser) {
     console.log(emailUser);
@@ -70,14 +70,17 @@ export default function SignIn() {
 
   //..................................................Google and Github Login Function....................................//
 
+  if (googleUser || gitHubUser) {
+    navigate("/");
+  }
+
   const googleLogin = async () => {
     await signInWithGoogle();
-    navigate("/");
+    // navigate("/");
   };
 
   const gitHub = async () => {
     await signInWithGithub();
-    navigate("/");
   };
 
   //..................................................Main Function..........................................//

@@ -166,3 +166,8 @@
 .password-container {
   position: relative;
 }
+@media screen and (max-width:450px){
+  .sign-in{
+    width: 23rem;
+  }
+}

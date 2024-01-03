@@ -1,5 +1,5 @@
 import "./Jobs.css";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { CiStar } from "react-icons/ci";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
@@ -19,6 +19,7 @@ export default function Jobs() {
         if (response.ok) {
           const data = await response.json();
           setApiData(data);
+     
         } else {
           throw new Error("Failed to fetch data");
         }
@@ -28,6 +29,7 @@ export default function Jobs() {
         setLoading(false);
       }
     };
+
     fetchData();
   }, [newdata]);
 
@@ -57,7 +59,7 @@ export default function Jobs() {
       icon: "success",
       title: "Successfully added to favorites",
       showConfirmButton: false,
-      timer: 1000
+      timer: 1000,
     });
   };
   const handleFavorite2 = async (data) => {

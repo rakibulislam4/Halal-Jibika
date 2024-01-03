@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <>
       <div className="hero">
-        <div className="hero-content-left">
+        <div  data-aos="fade-right" className="hero-content-left">
           <p className="advertise">
             We Have <span>208,000+</span> Live Jobs
           </p>
@@ -35,14 +35,14 @@ export default function Hero() {
               <IoMdSettings />
             </div>
           </div>
-          <h1 style={{ marginTop: "2rem", fontSize: "50px", width: "30rem" }}>
+          <h1 id="h1-2" >
             Scroll down to <span>Explore </span>
             More
           </h1>
         </div>
 
-        <div className="hero-content-right">
-          <img
+        <div data-aos="fade-left" className="hero-content-right">
+          <img className="hero-img"
             src={person}
             alt=""
           />

@@ -7,21 +7,23 @@ import { Audio } from "react-loader-spinner";
 import logo from "../../../assets/logo1.png";
 import auth from "../../../FIrebase/firebase";
 import { signOut } from "firebase/auth";
+import { useState } from "react";
+import { MdMenu } from 'react-icons/md';
 
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
+  
   const logout = () => {
     signOut(auth);
   };
-
-  const [user, loading, error] = useAuthState(auth);
-
   if (loading) {
     return (
       <Audio
         height="80"
         width="80"
         radius="9"
-        color="green"
+        color="rgba(15, 105, 231, 0.59)"
         ariaLabel="three-dots-loading"
         wrapperStyle
         wrapperClass
@@ -33,7 +35,8 @@ export default function Navbar() {
   }
   return (
     <div className="navbar-container">
-      <nav className="navbar">
+      <nav className={isMenuOpen ? "newNavBar" : "navbar"}>
+      
         <div className="nav-h1">
           <NavLink to="/">
             <img
@@ -42,15 +45,17 @@ export default function Navbar() {
             />
           </NavLink>
         </div>
-        <div className="nav-links">
-          <NavLink to="/"> Home</NavLink>
-          <NavLink to="/jobs">Jobs</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/favorite">Favorite</NavLink>
-          <NavLink to="/applied">Applied</NavLink>
-        </div>
-        <div className="nav-auth">
+      
+        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+        <NavLink to="/"> Home</NavLink>
+        <NavLink to="/jobs">Jobs</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/favorite">Favorite</NavLink>
+        <NavLink to="/applied">Applied</NavLink>
+      </div>
+      
+        <div className={`${isMenuOpen ? 'active-auth' : "nav-auth"}`}>
           {user ? (
             <button
               className="logout-btn"
@@ -93,8 +98,13 @@ export default function Navbar() {
                 <p>Guest</p>
               </div>
             )}
+
           </div>
         </div>
+
+          <div fontSize="30px" className="nav-hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <MdMenu style={{ fontSize: "30px" }} />
+      </div>
       </nav>
     </div>
   );
