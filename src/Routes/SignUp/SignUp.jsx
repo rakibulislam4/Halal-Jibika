@@ -113,6 +113,7 @@ export default function SignUp() {
                     placeholder="Full Name"
                     name="name"
                     type="text"
+                    required
                   />
                   <input
                     value={input}

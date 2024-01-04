@@ -80,7 +80,7 @@ export default function Navbar() {
                   src={user.photoURL}
                   alt=""
                 />
-                <p>{user.displayName}</p>
+                <p>{user?.displayName}</p>
               </div>
             ) : (
               <div
