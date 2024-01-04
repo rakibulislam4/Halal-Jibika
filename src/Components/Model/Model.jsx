@@ -25,7 +25,9 @@ const Modal = ({ data, onClose }) => {
       showConfirmButton: false,
       timer: 3000,
     });
-    onClose()
+    setTimeout(() => {
+      onClose();
+    }, 1000);
   };
 
   useEffect(() => {
