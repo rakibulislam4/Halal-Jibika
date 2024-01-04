@@ -3,12 +3,12 @@ import { FaUserCheck } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { MdLogin } from "react-icons/md";
 import "./Navbar.css";
-import { Audio } from "react-loader-spinner";
 import logo from "../../../assets/logo1.png";
 import auth from "../../../FIrebase/firebase";
 import { signOut } from "firebase/auth";
 import { useState } from "react";
 import { MdMenu } from 'react-icons/md';
+import Loading from "../../Loading/Loading";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,15 +19,7 @@ export default function Navbar() {
   };
   if (loading) {
     return (
-      <Audio
-        height="80"
-        width="80"
-        radius="9"
-        color="rgba(15, 105, 231, 0.59)"
-        ariaLabel="three-dots-loading"
-        wrapperStyle
-        wrapperClass
-      />
+     <Loading/>
     );
   }
   if (error) {

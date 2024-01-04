@@ -1,18 +1,18 @@
-import { Audio } from "react-loader-spinner";
+import { ColorRing } from "react-loader-spinner";
 import './Loading.css'
 export default function Loading() {
   return (
     <div className="loading">
     
-    <Audio
+    <ColorRing
+  visible={true}
   height="80"
   width="80"
-  radius="9"
-  color="rgba(15, 105, 231, 0.59)"
-  ariaLabel="three-dots-loading"
-  wrapperStyle
-  wrapperClass
-/>
+  ariaLabel="color-ring-loading"
+  wrapperStyle={{}}
+  wrapperClass="color-ring-wrapper"
+  colors={['#1640D6','#1640D6','#1640D6','#1640D6','#1640D6','#1640D6','#1640D6']}
+  />
     </div>
   )
 }
