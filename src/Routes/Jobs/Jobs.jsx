@@ -174,6 +174,7 @@ export default function Jobs() {
                 data={editData}
                 onClose={handleJobClose}
                 setNewData={setnewData}
+                
               />
             )}
           </div>

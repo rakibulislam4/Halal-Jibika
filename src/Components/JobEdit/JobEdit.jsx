@@ -27,7 +27,9 @@ export default function JobEdit({ data, onClose, setNewData }) {
       body: JSON.stringify(formData),
     });
     setNewData(data);
+    onClose();
   };
+
   return (
     <div className="job-edit">
       <form onSubmit={handleSubmit}>
