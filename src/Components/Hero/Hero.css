@@ -13,6 +13,7 @@
   align-items: center;
   margin-top: 5rem;
   padding-left: 1rem;
+  justify-content: center;
 }
 .hero-content-left {
   display: flex;
@@ -20,20 +21,8 @@
   gap: 1rem;
   position: relative;
   z-index: 999999999;
-  /* animation-name: left;
-  animation-duration: 1s;
-  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1) \;; */
 }
-/* @keyframes left {
-  from {
-    opacity: 0;
-    transform: translateX(-10rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-} */
+
 .explore-now {
   border: none;
   padding: 5px 10px;
@@ -70,6 +59,7 @@
   width: 25%;
   height: 100%;
   background-color: #0f69e7;
+
 }
 
 .explore-now:hover .first {
